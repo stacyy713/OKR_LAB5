@@ -1,0 +1,211 @@
+
+#wrapper{
+	margin-left: 2.5%;
+	width: 1200px;
+	/*margin: 0 auto;*/
+	z-index: 1;
+	position: absolute;
+
+
+}
+
+#header{
+	width: 1200px;
+	height: 150px;
+	background: #87CEEB;
+
+
+}
+
+#footer{
+	width: 1200px;
+	height: 150px;
+	background: #87CEEB;
+
+
+}
+
+
+#content{
+	text-align: center;
+	position: normal;
+
+}
+
+#first_block{
+	width: 200px;
+	height: 300px;
+	float: right;
+	background: #FFF5EE;
+	/*	overflow: auto;*/
+
+}
+
+#second_block{
+	width: 800px;
+	height: 40px;
+	float: right;
+	background: #E6E6FA;
+
+}
+
+#third_block{
+	width: 800px;
+	height: 210px;
+	float: right;
+	background: #E0FFFF;
+	overflow: scroll;
+}
+
+img{
+	/*padding: 1%;*/
+	display: inline-block;
+}
+
+#forth_block{
+	width: 1000px;
+	height: 50px;
+	float: right;
+	background: #E6E6FA;
+	line-height: 50px;
+
+}
+
+#fifth_block{
+	width: 200px;
+	height: 270px;
+	background: #FFF5EE;
+	
+}
+
+
+table{
+	padding-top: 3%;
+	padding-right: 2%;
+
+}
+
+h2{
+	padding-top: 3%;
+	padding-right: 2%;
+	padding-left: 2%;
+}
+
+h3{
+	padding: 5%;
+}
+
+
+*{
+	margin: 0px;
+}
+
+p{
+	display: inline-block;
+}
+
+#work {
+	margin-top: 30px;
+	margin-left: 300px;
+	background: cornflowerblue;
+	z-index:2222;
+	
+	position: absolute;
+
+	display: none;
+}
+#anim {
+	background-image: url(image/iconmonstr-candy-10-32.png);
+	background-repeat: space;
+	outline: 5px solid red;
+
+	margin-left: 0.77%;
+	margin-top: 7%;
+
+}
+
+#square{
+	background-color: darkred;
+	width:10px;
+	height:10px;
+
+
+	display: none;
+	animation-name: squareMove;
+	animation-timing-function: linear;
+	animation-duration: 10s;
+
+	animation-fill-mode: forwards;
+	opacity: 1;
+}
+#close{
+	float: left;
+
+}
+
+#start{
+	float: left;
+}
+#OpenBtn{
+	float: middle;
+}
+
+
+
+
+@keyframes squareMove{
+	0%{
+		transform: translate(0, 0);
+		opacity: 1;
+	}
+	25%{
+		transform: translate(635px, 200px);
+		opacity: 1;
+	}
+	50%{
+		transform: translate(0px, 80px);
+		opacity: 1;
+	}
+	75%{
+		transform: translate(500px, 0px);
+		opacity: 1;
+	}
+	100%{
+		transform: translate(50px, 400px);
+		display: none;
+	}
+
+
+	/*50%{
+		transform: translate(0px, 450px);
+		opacity: 0.9;
+	}
+	60%{
+		transform: translate(-50px, 500px);
+		opacity: 0.7;
+	}
+	70%{
+		transform: translate(-100px, 550px);
+		opacity: 0.5;
+	}
+	80%{
+		transform: translate(-150px, 600px);
+		opacity: 0;
+	}
+	90%{
+		transform: translate(-200px, 650px);
+		opacity: 0;
+	}
+	100%{
+		transform: translate(-250px, 700px);
+		opacity: 0;
+		display: none;
+
+
+	}
+*/
+}
+
+
+
+

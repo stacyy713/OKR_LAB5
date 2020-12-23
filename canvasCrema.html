@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crema</title>
+    
+    
+    <link rel="stylesheet" type="text/css" href="canvasCSS.css">
+</head>
+<body>
+
+    <div id="wrapper">
+        <div id="header">
+            <table align="right">
+                <tr bgcolor="white">
+                    <td><h1><font face="Arial">Подорож Європою</font></h1></td>
+                </tr>
+            </table>
+            <h2><font color="#4B0082" face="Arial">Крема, Італія</font></h2>
+        </div>
+
+
+        <div id="content">
+            <div id="first_block">
+                <p>В історичних документах місто вперше починає фігурувати <u>в 11 столітті</u>. У той період часу воно знаходилося під керівництвом тосканської королеви Матильди.</p>
+                <p>Ця Матильда в 1098 року вирішила подарувати його єпископу Кремони і місто з того часу стало частиною Ломбардії.</p>
+
+            </div> 
+
+            <div id="second_block">
+                <p>
+                    Історія Креми тісно пов'язана з вторгненням в 6 столітті на територію Італії племені ломбардів.
+                    <br>Назва «Крема» з ломбардного означає «невеликий пагорб».</p>
+                </div> 
+
+                <div id="third_block">
+
+                    <!-- <p>
+                        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/12/ac/f0/f3/photo1jpg.jpg?w=1000&h=600&s=1" width="300" height="190">
+                        &nbsp; 
+                        <img src="https://img.travel.ru/images2/2014/01/object226062/002_0_e5299_1c6fba2e_XL.jpg" width="300" height="190">
+
+                    </p> -->
+
+                    <input type="button" value="Play" onclick="BtnChange()" id="OpenBtn">
+                    <div id="results"></div>
+                </div>
+
+                <div id="forth_block">
+                    <p><strong>Крема</strong> - містечко, розташоване в центрі Ломбардії, в провінції Кремона, приблизно в 40 км на схід від Мілана.</p>
+
+                </div>
+
+                <div id="fifth_block">
+                    <h3><font face="Arial">Меню:</font></h3>
+                    <ol>
+                        <li><a href="Crema2.html">Крема</a></li>
+                        <li><a href="">Марсель</a></li>
+                        <li><a href="">Дрезден</a></li>
+                        <li><a href="">Прага</a></li>
+                    </ol>
+                </div>
+            </div>
+
+
+            <div id="footer">
+                <table align="right">
+                    <tr bgcolor="white">
+                        <td><h1><font face="Arial">Подорож Європою</font></h1></td>
+                    </tr>
+                </table>
+
+                <h3>Цікава частина старого міста Крема розташована навколо площі Piazza del Duomo, <br>навколо якої вишикувалися численні релігійні та світські будівлі</h3>
+                <!-- <p>Серед них - кафедральний собор, преторіанский і муніципальний палаци і ренесансний "Torrazzo".</h3> -->
+                </div>
+            </div> 
+
+            <div id="work">
+
+                <input type="button" value="Close" id="CloseBtn" onclick="BtnChange2()">
+                <input type="button" value="Reload" id="ReloadBtn" onclick="reloadMove()" style="display: none; float: left">
+                
+                <input type="button" value="Start" id="startMove" onclick="startMove()" style="float: left">
+                <input type="button" value="Stop" id="stopSquare" onclick="stopMove()" style="display: none; float: left">
+                <input type="button" value="Start" id="restart1" onclick="restartStop()" style="display: none; float: left">
+                <input type="button" value="Start" id="restart2" onclick="restartMove()" style="display: none; float: left">
+                
+                <!-- <input type="button" value="Start" id="startMove" style="float: left">
+                    <input type="button" value="Stop" id="stopSquare" onclick="stopMove()" style="display: none; float: left"> -->
+
+                    <div id="controls" style="position: absolute; margin-left: 30%; "></div>
+                    <div id="anim">
+                        <canvas id="myCanvas" width="640" height="404"></canvas>
+                    </div>
+                </div>
+            </div>
+
+
+            <script type="text/javascript">
+                var key = 1;
+                let workField =  document.getElementById('work');
+                let animField = document.getElementById('anim');
+
+                workField.style.height = ((window.innerHeight * 0.7)+50)+"px";
+                workField.style.width = ((window.innerWidth * 0.5)+10)+"px";
+
+                animField.style.height = (window.innerHeight * 0.7)+"px";
+                animField.style.width = (window.innerWidth * 0.5)+"px";
+
+                function BtnChange(){
+                    document.getElementById('work').style.display = 'block';
+                    storageLog("open button was pressed");
+
+                }
+
+             function storageLog(string){
+                 var today = new Date();
+                 var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+                 var data = string + " at:  " + time;
+                 localStorage.setItem(key, data);
+                 key++;
+             }
+
+             function storagePrint(){
+                 var stringToPrint = "";
+                 for (var i = 0; i < localStorage.length; i++){
+                  stringToPrint += "\n " + localStorage.getItem(localStorage.key(i)) + ".";
+              }
+              document.getElementById("results").innerHTML = stringToPrint;
+
+          }
+
+          function BtnChange2(){
+            document.getElementById('work').style.display = 'none';
+            storageLog("close button was pressed");
+            storagePrint();
+        }
+
+
+        function stopMove(){ 
+           dx = 0;
+           dy = 0;
+           document.getElementById("controls").innerHTML = "Stop..";
+           document.getElementById('startMove').style.display = "none";
+           document.getElementById('stopSquare').style.display = "none";
+           document.getElementById('restart1').style.display = "block";
+           storageLog("stop button was pressed");
+
+       }
+
+       function restartStop(){
+        dx = 2;
+        dy = -2;
+        document.getElementById('restart1').style.display = "none";
+        document.getElementById('stopSquare').style.display = "block";
+        storageLog("restart button was pressed");
+
+    }
+
+    function reloadMove(){
+        dx = 0;
+        dy = 0;
+        x = canvas.width/2;
+        y = canvas.height/2;
+        document.getElementById("controls").innerHTML = "Reload!";
+        document.getElementById('ReloadBtn').style.display = "none";
+        document.getElementById('startMove').style.display = "none";
+        document.getElementById('stopSquare').style.display = "none";
+        document.getElementById('restart2').style.display = "block";
+        storageLog("reload button was pressed");
+
+    }
+
+    function restartMove(){
+        document.getElementById('stopSquare').style.display = "block";
+        document.getElementById('restart2').style.display = "none";
+        storageLog("restart button was pressed");
+        dx = 2;
+        dy = -2;
+    }
+
+    function startMove(){
+        document.getElementById('stopSquare').style.display = "block";
+        document.getElementById('startMove').style.display = "none";
+             // storageLog("start animation canvas button was pressed");
+
+             function drawRect(){
+
+                ctx.beginPath();
+                ctx.rect(x, y, 10, 10);
+                ctx.fillStyle = "darkred";
+                ctx.fill();
+                ctx.closePath();
+            }
+            function draw() {
+
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                drawRect();
+
+                if(x + dx > canvas.width) {
+                    dx = -dx;
+                    document.getElementById('controls').innerHTML = "Удар об праву стінку";
+                    storageLog("square hit right wall");
+                }
+                if( x + dx < 0){
+                    dx = -dx;
+                    document.getElementById('controls').innerHTML = "Удар об ліву стінку";
+                    storageLog("square hit left wall");
+                }
+
+                if(y + dy < 0) {
+                    dy = -dy;
+                    document.getElementById('controls').innerHTML = "Удар об верхню стінку";
+                    storageLog("square hit upper wall");
+                }
+                if(y + dy > canvas.height){
+                // dy = -dy;
+                document.getElementById('controls').innerHTML = "Квадрат покинув поле anim";
+                document.getElementById('ReloadBtn').style.display = "block";
+                document.getElementById('startMove').style.display = "none";
+                document.getElementById('stopSquare').style.display = "none";
+                // storageLog("Квадрат вилетів з поля anim");
+
+
+            }
+
+            x += dx;
+            y += dy;
+        }
+        setInterval(draw, 10);
+        // draw();
+    }
+
+    let canvas = document.getElementById("myCanvas");
+    let ctx = canvas.getContext("2d");
+    let x = canvas.width/2;
+    let y = canvas.height/2;
+    let dx = 2;
+    let dy = -2;
+
+</script>
+
+</body>
+</html>

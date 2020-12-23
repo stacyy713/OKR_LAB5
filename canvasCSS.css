@@ -1,0 +1,152 @@
+        #work {
+            /*margin-top: 30px;*/
+            /*margin-left: 300px;*/
+            background: cornflowerblue;
+            /*z-index: 100;*/
+            /*position: absolute;*/
+            margin-left: 300px;
+            bottom: 100px;
+            /*box-sizing: border-box;*/
+            display: none;
+            /*z-index: 2;*/
+            position: absolute;
+            z-index: 1;
+        }
+        #anim {
+            /*background-color: aliceblue;*/
+            z-index: 2;
+            position: absolute;
+            outline: 5px solid red;
+            background: url(image/iconmonstr-candy-10-32.png) repeat;
+            /*position: absolute;*/
+            /*			bottom: 0;
+            left: 0;*/
+            /*box-sizing: border-box;*/
+            margin-left: 0.77%;
+            /*margin-top: 40px;*/
+            margin-top: 46px;
+            /*z-index: 100;*/
+        }
+/*        #mainCanv{
+            z-index: 1;
+            background-color: transparent;
+            position: relative;
+        }*/
+        body{
+            /*z-index: 1;*/
+            /*position: absolute;*/
+        }
+        #CloseBtn{
+            float: left;
+        }
+        /*#SqStop{
+            float: left;
+        }
+        #Sq{
+            float: left;
+        }*/
+
+        #wrapper{
+    margin-left: 2.5%;
+    width: 1200px;
+    /*margin: 0 auto;*/
+    z-index: 1;
+    position: absolute;
+
+
+}
+
+#header{
+    width: 1200px;
+    height: 150px;
+    background: #87CEEB;
+
+
+}
+
+#footer{
+    width: 1200px;
+    height: 150px;
+    background: #87CEEB;
+
+
+}
+
+
+#content{
+    text-align: center;
+    position: normal;
+
+}
+
+#first_block{
+    width: 200px;
+    height: 300px;
+    float: right;
+    background: #FFF5EE;
+    /*  overflow: auto;*/
+
+}
+
+#second_block{
+    width: 800px;
+    height: 40px;
+    float: right;
+    background: #E6E6FA;
+
+}
+
+#third_block{
+    width: 800px;
+    height: 210px;
+    float: right;
+    background: #E0FFFF;
+    overflow: scroll;
+}
+
+img{
+    /*padding: 1%;*/
+    display: inline-block;
+}
+
+#forth_block{
+    width: 1000px;
+    height: 50px;
+    float: right;
+    background: #E6E6FA;
+    line-height: 50px;
+
+}
+
+#fifth_block{
+    width: 200px;
+    height: 270px;
+    background: #FFF5EE;
+    
+}
+
+
+table{
+    padding-top: 3%;
+    padding-right: 2%;
+
+}
+
+h2{
+    padding-top: 3%;
+    padding-right: 2%;
+    padding-left: 2%;
+}
+
+h3{
+    padding: 5%;
+}
+
+
+*{
+    margin: 0px;
+}
+
+p{
+    display: inline-block;
+}

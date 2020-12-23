@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script type="text/javascript" 
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js">
+</script>
+<title>Crema</title>
+<!-- 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="jscode.js"></script> -->
+	<link rel="stylesheet" type="text/css" href="cssAnimation.css">
+</head>
+<body>
+
+	<div id="wrapper">
+		<div id="header">
+			<table align="right">
+				<tr bgcolor="white">
+					<td><h1><font face="Arial">Подорож Європою</font></h1></td>
+				</tr>
+			</table>
+			<h2><font color="#4B0082" face="Arial">Крема, Італія</font></h2>
+		</div>
+
+
+		<div id="content">
+			<div id="first_block">
+				<p>В історичних документах місто вперше починає фігурувати <u>в 11 столітті</u>. У той період часу воно знаходилося під керівництвом тосканської королеви Матильди.</p>
+				<p>Ця Матильда в 1098 року вирішила подарувати його єпископу Кремони і місто з того часу стало частиною Ломбардії.</p>
+
+			</div> 
+
+			<div id="second_block">
+				<p>
+					Історія Креми тісно пов'язана з вторгненням в 6 столітті на територію Італії племені ломбардів.
+					<br>Назва «Крема» з ломбардного означає «невеликий пагорб».</p>
+				</div> 
+
+				<div id="third_block">
+
+					<!-- <p>
+						<img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/12/ac/f0/f3/photo1jpg.jpg?w=1000&h=600&s=1" width="300" height="190">
+						&nbsp; 
+						<img src="https://img.travel.ru/images2/2014/01/object226062/002_0_e5299_1c6fba2e_XL.jpg" width="300" height="190">
+
+					</p> -->
+
+					<input type="button" value="Play" id="OpenBtn" onclick="BtnChange()">
+					<div id="results"></div>
+				</div>
+
+				<div id="forth_block">
+					<p><strong>Крема</strong> - містечко, розташоване в центрі Ломбардії, в провінції Кремона, приблизно в 40 км на схід від Мілана.</p>
+
+				</div>
+
+				<div id="fifth_block">
+					<h3><font face="Arial">Меню:</font></h3>
+					<ol>
+						<li><a href="Crema2.html">Крема</a></li>
+						<li><a href="">Марсель</a></li>
+						<li><a href="">Дрезден</a></li>
+						<li><a href="">Прага</a></li>
+					</ol>
+				</div>
+			</div>
+
+
+			<div id="footer">
+				<table align="right">
+					<tr bgcolor="white">
+						<td><h1><font face="Arial">Подорож Європою</font></h1></td>
+					</tr>
+				</table>
+
+				<h3>Цікава частина старого міста Крема розташована навколо площі Piazza del Duomo, <br>навколо якої вишикувалися численні релігійні та світські будівлі</h3>
+				<!-- <p>Серед них - кафедральний собор, преторіанский і муніципальний палаци і ренесансний "Torrazzo".</h3> -->
+				</div>
+			</div> 
+
+			<div id="work">
+				
+
+				<input type="button" value="Close" id="close" onclick="BtnChange2()">
+				<input type="button" value="Start" id="start" onclick="startAnim()" style="display: block; float: left">
+				<input type="button" value="Reload" id="reload"  onclick="rel()" style="display: none; float: left">
+				<!-- <input type="button" value="Stop" id="stop" 
+					onclick="stopAnim()" style="display: block; float: left"> -->
+
+
+					<div id="controls" style="position: absolute; margin-left: 50%"></div>
+					<div id="anim">
+						<div id="square"></div>
+					</div>
+				</div>
+
+
+
+
+				<script type="text/javascript">
+					var key = 1;
+
+					let workField =  document.getElementById('work');
+					let animField = document.getElementById('anim');
+
+					workField.style.height = ((window.innerHeight * 0.7)+50)+"px";
+					workField.style.width = ((window.innerWidth * 0.5)+10)+"px";
+
+					animField.style.height = (window.innerHeight * 0.7)+"px";
+					animField.style.width = (window.innerWidth * 0.5)+"px";
+
+
+					function BtnChange(){
+						document.getElementById('work').style.display = 'block';
+						storageLog("open button was pressed");
+
+					}
+					function BtnChange2(){
+						document.getElementById('work').style.display = 'none';
+						storageLog("close button was pressed");
+						storagePrint();
+					}
+					function storageLog(string){
+						var today = new Date();
+						var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+						var data = string + " at:  " + time;
+						localStorage.setItem(key, data);
+						key++;
+
+						document.getElementById('controls').innerText = string; 
+					}
+
+					function storagePrint(){
+						var stringToPrint = "";
+						for (var i = 0; i < localStorage.length; i++){
+							stringToPrint += "\n " + localStorage.getItem(localStorage.key(i)) + ".";
+						}
+						document.getElementById("results").innerHTML = stringToPrint;
+					}
+
+
+
+					let start = document.getElementById('start');
+					let sq = document.getElementById('square'); 
+					let reload = document.getElementById('reload');
+
+
+					function startAnim(){
+						document.getElementById('square').style.display = "block";
+						sq.style.animationPlayState = 
+						(sq.style.animationPlayState == 'running') ? 'paused' : 'running';
+						start.value = (sq.style.animationPlayState == 'running') ? 'Stop' : 'Start';
+						if(start.value === "Start"){
+							storageLog("stop button was pressed");
+						}
+						if(start.value === "Stop"){
+							storageLog("start button was pressed");
+						}
+					}
+
+
+
+
+					const animated = document.getElementById('square');
+
+					animated.addEventListener('animationend', () => {
+  	// alert('Animation ended');
+  	// animated.style.animationFillMode = "none";
+  	animated.style.display = "none";
+  	document.getElementById('start').style.display = "none";
+  	document.getElementById('reload').style.display = "block";
+
+  });
+
+					function rel(){
+						storageLog("reload button was pressed");
+						animated.style.animationFillMode = "none";
+						reload.style.display = "none";
+						start.style.display = "block";
+						start.value = "Start";
+						sq.style.animationPlayState == 'running';
+						sq.style.animationFillMode = "none"; 
+
+						
+					}
+
+
+
+				</script>
+			</body>
+			</html>
